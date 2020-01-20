@@ -11,7 +11,8 @@ library(data.table)
 library(tidyselect)
 library(reshape2)
 
-#setwd("/Volumes/Samsung_T5/Lessons/Coursera-DataScience/DataCleaning/week4/submission")
+#MAC: setwd("/Volumes/Samsung_T5/Lessons/Coursera-DataScience/DataCleaning/week4/submission")
+WIN: setwd("B:\\Ella\\Documents\\Visual Studio 2019\\TutorialMod\\datasciencecoursera\\Getting-Cleaning-Data-Week-4-Project")
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 datapath <- paste0(getwd(), "/UCI HAR Dataset")
 
@@ -71,4 +72,4 @@ combined.long <- reshape2::melt(data = mergedData, id = c("subjectId", "activity
 combined.wide <- reshape2::dcast(combined.long, subjectId + activityName ~ variable, mean)
 
 #save combined.wide as txt file
-data.table::fwrite(x = combined.wide, file = "tidydata.txt", quote = FALSE)
+data.table::fwrite(x = combined.wide, file = "tidydata.txt", quote = FALSE, row.names = FALSE)
